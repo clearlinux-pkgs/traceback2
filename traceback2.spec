@@ -4,7 +4,7 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 10
+Release  : 11
 URL      : https://pypi.python.org/packages/source/t/traceback2/traceback2-1.4.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/t/traceback2/traceback2-1.4.0.tar.gz
 Summary  : Backports of the traceback module
