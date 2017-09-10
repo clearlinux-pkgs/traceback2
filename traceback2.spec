@@ -6,16 +6,16 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 18
+Release  : 19
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
-Source99 : https://pypi.python.org/packages/source/t/traceback2/traceback2-1.4.0.tar.gz.asc
+Source99 : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
 Summary  : Backports of the traceback module
 Group    : Development/Tools
 License  : Python-2.0
+Requires: traceback2-legacypython
 Requires: traceback2-python
 Requires: linecache2
-BuildRequires : configparser-python
 BuildRequires : contextlib2
 BuildRequires : fixtures
 BuildRequires : pbr
@@ -44,9 +44,18 @@ BuildRequires : unittest2
         use behaves similarly to the Python3 version - objects where unicode(obj) fails
         but str(object) works will be shown as b'thestrvaluerepr'.
 
+%package legacypython
+Summary: legacypython components for the traceback2 package.
+Group: Default
+
+%description legacypython
+legacypython components for the traceback2 package.
+
+
 %package python
 Summary: python components for the traceback2 package.
 Group: Default
+Requires: traceback2-legacypython
 
 %description python
 python components for the traceback2 package.
@@ -60,12 +69,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501862635
+export SOURCE_DATE_EPOCH=1505072553
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1501862635
+export SOURCE_DATE_EPOCH=1505072553
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -76,7 +85,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
