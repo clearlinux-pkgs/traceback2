@@ -6,7 +6,7 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 20
+Release  : 21
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source99 : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
@@ -14,6 +14,7 @@ Summary  : Backports of the traceback module
 Group    : Development/Tools
 License  : Python-2.0
 Requires: traceback2-legacypython
+Requires: traceback2-python3
 Requires: traceback2-python
 Requires: linecache2
 BuildRequires : contextlib2
@@ -56,9 +57,18 @@ legacypython components for the traceback2 package.
 Summary: python components for the traceback2 package.
 Group: Default
 Requires: traceback2-legacypython
+Requires: traceback2-python3
 
 %description python
 python components for the traceback2 package.
+
+
+%package python3
+Summary: python3 components for the traceback2 package.
+Group: Default
+
+%description python3
+python3 components for the traceback2 package.
 
 
 %prep
@@ -69,12 +79,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505367900
+export SOURCE_DATE_EPOCH=1506871938
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505367900
+export SOURCE_DATE_EPOCH=1506871938
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -90,5 +100,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
