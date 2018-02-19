@@ -295,6 +295,7 @@ libcanberra
 libcroco
 libcryptui
 libdnf
+libdrm
 libgdata
 libglade
 libgnome-keyring
@@ -369,6 +370,7 @@ nasm
 nautilus
 nbconvert
 nbformat
+nbsphinx
 ndctl
 ndg_httpsclient
 neon
@@ -511,6 +513,7 @@ six
 smart_open
 snowballstemmer
 sos
+sphinx_rtd_theme
 sphinxcontrib-newsfeed
 sphinxcontrib-websupport
 spice

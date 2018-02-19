@@ -5,3 +5,6 @@ fixtures
 testtools
 unittest2
 testrepository
+Babel
+Babel-legacypython
+unittest2-legacypython
