@@ -8,3 +8,5 @@ testrepository
 Babel
 Babel-legacypython
 unittest2-legacypython
+pbr-legacypython
+pytz-legacypython

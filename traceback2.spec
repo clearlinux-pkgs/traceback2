@@ -6,13 +6,14 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 29
+Release  : 30
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source99 : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
 Summary  : Backports of the traceback module
 Group    : Development/Tools
 License  : Python-2.0
+Requires: traceback2-legacypython
 Requires: traceback2-python3
 Requires: traceback2-python
 Requires: linecache2
@@ -21,9 +22,11 @@ BuildRequires : Babel-legacypython
 BuildRequires : contextlib2
 BuildRequires : fixtures
 BuildRequires : pbr
+BuildRequires : pbr-legacypython
 BuildRequires : pip
 BuildRequires : python-dev
 BuildRequires : python3-dev
+BuildRequires : pytz-legacypython
 BuildRequires : setuptools
 BuildRequires : testrepository
 BuildRequires : testtools
@@ -82,12 +85,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519050762
+export SOURCE_DATE_EPOCH=1526510686
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1519050762
+export SOURCE_DATE_EPOCH=1526510686
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
