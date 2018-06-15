@@ -23,7 +23,7 @@ BuildRequires : fixtures
 BuildRequires : pbr
 BuildRequires : pbr-legacypython
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : pytz-legacypython
 BuildRequires : setuptools
