@@ -9,5 +9,5 @@ Babel
 deprecated-Babel-legacypython
 unittest2-legacypython
 pbr-legacypython
-pytz-legacypython
+deprecated-pytz-legacypython
 setuptools-legacypython

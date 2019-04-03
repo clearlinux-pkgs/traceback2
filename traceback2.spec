@@ -6,7 +6,7 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 46
+Release  : 47
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source99 : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
@@ -17,14 +17,13 @@ Requires: traceback2-python = %{version}-%{release}
 Requires: traceback2-python3 = %{version}-%{release}
 Requires: linecache2
 BuildRequires : Babel
-BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : contextlib2
 BuildRequires : deprecated-Babel-legacypython
+BuildRequires : deprecated-pytz-legacypython
 BuildRequires : fixtures
 BuildRequires : pbr
 BuildRequires : pbr-legacypython
-BuildRequires : pytz-legacypython
 BuildRequires : setuptools-legacypython
 BuildRequires : testrepository
 BuildRequires : testtools
@@ -34,15 +33,6 @@ BuildRequires : unittest2-legacypython
 %description
 A backport of traceback to older supported Pythons.
 >>> import traceback2 as traceback
-
-%package legacypython
-Summary: legacypython components for the traceback2 package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the traceback2 package.
-
 
 %package python
 Summary: python components for the traceback2 package.
@@ -70,25 +60,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554308814
-python2 setup.py build -b py2
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1554329330
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
-export SOURCE_DATE_EPOCH=1554308814
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
