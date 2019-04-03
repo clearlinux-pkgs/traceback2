@@ -6,28 +6,25 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 45
+Release  : 46
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source99 : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
 Summary  : Backports of the traceback module
 Group    : Development/Tools
 License  : Python-2.0
-Requires: traceback2-python3
-Requires: traceback2-python
+Requires: traceback2-python = %{version}-%{release}
+Requires: traceback2-python3 = %{version}-%{release}
 Requires: linecache2
 BuildRequires : Babel
-BuildRequires : Babel-legacypython
+BuildRequires : buildreq-distutils23
+BuildRequires : buildreq-distutils3
 BuildRequires : contextlib2
+BuildRequires : deprecated-Babel-legacypython
 BuildRequires : fixtures
 BuildRequires : pbr
 BuildRequires : pbr-legacypython
-BuildRequires : pip
-BuildRequires : python-core
-BuildRequires : python3-core
-BuildRequires : python3-dev
 BuildRequires : pytz-legacypython
-BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
 BuildRequires : testrepository
 BuildRequires : testtools
@@ -35,21 +32,8 @@ BuildRequires : unittest2
 BuildRequires : unittest2-legacypython
 
 %description
+A backport of traceback to older supported Pythons.
 >>> import traceback2 as traceback
-        
-        Profit.
-        
-        Things to be aware of!
-        
-        In Python 2.x, unlike traceback, traceback2 creates unicode output (because it
-        depends on the linecache2 module).
-        
-        Exception frame clearing silently does nothing if the interpreter in use does
-        not support it.
-        
-        traceback2._some_str, which while not an official API is so old its likely in
-        use behaves similarly to the Python3 version - objects where unicode(obj) fails
-        but str(object) works will be shown as b'thestrvaluerepr'.
 
 %package legacypython
 Summary: legacypython components for the traceback2 package.
@@ -63,7 +47,7 @@ legacypython components for the traceback2 package.
 %package python
 Summary: python components for the traceback2 package.
 Group: Default
-Requires: traceback2-python3
+Requires: traceback2-python3 = %{version}-%{release}
 
 %description python
 python components for the traceback2 package.
@@ -86,12 +70,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530377847
+export SOURCE_DATE_EPOCH=1554308814
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1530377847
+export SOURCE_DATE_EPOCH=1554308814
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
