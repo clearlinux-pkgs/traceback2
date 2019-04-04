@@ -1,6 +1,7 @@
 # This file contains recursive sources that require this package
 amqp
 deprecated-funcsigs
+deprecated-testscenarios
 funcsigs
 gabbi
 kombu
