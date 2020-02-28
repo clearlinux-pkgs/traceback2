@@ -1,11 +1,9 @@
 # This file contains recursive sources that require this package
 amqp
-deprecated-funcsigs
-deprecated-testscenarios
+conda
 funcsigs
-gabbi
 kombu
-sqlalchemy-migrate
 subunit
 testrepository
 testscenarios
+unittest2
