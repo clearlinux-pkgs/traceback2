@@ -6,7 +6,7 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 54
+Release  : 55
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source1  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
@@ -27,23 +27,21 @@ BuildRequires : testtools
 BuildRequires : unittest2
 
 %description
-A backport of traceback to older supported Pythons.
-
- >>> import traceback2 as traceback
-
-Profit.
-
-Things to be aware of!
-
-In Python 2.x, unlike traceback, traceback2 creates unicode output (because it
-depends on the linecache2 module).
-
-Exception frame clearing silently does nothing if the interpreter in use does
-not support it.
-
-traceback2._some_str, which while not an official API is so old its likely in
-use behaves similarly to the Python3 version - objects where unicode(obj) fails
-but str(object) works will be shown as b'thestrvaluerepr'.
+>>> import traceback2 as traceback
+        
+        Profit.
+        
+        Things to be aware of!
+        
+        In Python 2.x, unlike traceback, traceback2 creates unicode output (because it
+        depends on the linecache2 module).
+        
+        Exception frame clearing silently does nothing if the interpreter in use does
+        not support it.
+        
+        traceback2._some_str, which while not an official API is so old its likely in
+        use behaves similarly to the Python3 version - objects where unicode(obj) fails
+        but str(object) works will be shown as b'thestrvaluerepr'.
 
 %package python
 Summary: python components for the traceback2 package.
@@ -59,6 +57,7 @@ Summary: python3 components for the traceback2 package.
 Group: Default
 Requires: python3-core
 Provides: pypi(traceback2)
+Requires: pypi(linecache2)
 
 %description python3
 python3 components for the traceback2 package.
@@ -73,12 +72,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582908592
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603406446
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
