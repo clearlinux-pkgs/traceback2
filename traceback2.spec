@@ -6,7 +6,7 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 56
+Release  : 57
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source1  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
