@@ -4,5 +4,3 @@ funcsigs
 subunit
 testrepository
 testscenarios
-testtools
-unittest2

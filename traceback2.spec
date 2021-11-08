@@ -6,7 +6,7 @@
 #
 Name     : traceback2
 Version  : 1.4.0
-Release  : 66
+Release  : 67
 URL      : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source0  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz
 Source1  : http://pypi.debian.net/traceback2/traceback2-1.4.0.tar.gz.asc
@@ -24,7 +24,6 @@ BuildRequires : linecache2
 BuildRequires : pbr
 BuildRequires : testrepository
 BuildRequires : testtools
-BuildRequires : unittest2
 
 %description
 >>> import traceback2 as traceback
@@ -72,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603406446
+export SOURCE_DATE_EPOCH=1636406301
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
